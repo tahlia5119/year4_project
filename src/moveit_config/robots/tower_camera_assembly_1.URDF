@@ -1,0 +1,546 @@
+<robot
+  name="tower_camera_assembly_1">
+  <link name="base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <box size="0.05 0.05 0.001"/>
+      </geometry>
+      <material name="TransparentGreen"/>
+    </visual>
+  </link>
+  <joint name="base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+  </joint>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00888950033020454 0.0324441356497087 -1.93256539888973E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.279226075944994" />
+      <inertia
+        ixx="0.000302758294705719"
+        ixy="-1.07354968339495E-05"
+        ixz="-1.63397444759448E-10"
+        iyy="0.000526452482076826"
+        iyz="4.66295571449757E-09"
+        izz="0.00036031962619816" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/torso_base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/torso_base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="upper_arm_link">
+    <inertial>
+      <origin
+        xyz="0.000439674942789207 0.0206220050271017 -0.000151544712229187"
+        rpy="0 0 0" />
+      <mass
+        value="0.935567032459903" />
+      <inertia
+        ixx="0.00213865393244183"
+        ixy="-6.94578322883523E-06"
+        ixz="5.41665346088161E-08"
+        iyy="0.00271084091298851"
+        iyz="-8.20672220441928E-06"
+        izz="0.00166021817663199" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/upper_arm_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/upper_arm_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="sholder_pan_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0585000000000001"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="upper_arm_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="forearm_Link">
+    <inertial>
+      <origin
+        xyz="-0.195318020443764 -0.0029805590678128 0.00119651616279474"
+        rpy="0 0 0" />
+      <mass
+        value="0.343552885701891" />
+      <inertia
+        ixx="0.000178484752508881"
+        ixy="-3.72642087825301E-05"
+        ixz="5.27643483659204E-05"
+        iyy="0.00432794777275835"
+        iyz="4.81848628822512E-07"
+        izz="0.0042159935452643" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/forearm_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/forearm_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="elbow_lift_joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0675500000000001"
+      rpy="0 1.57 -1.57" />
+    <parent
+      link="upper_arm_link" />
+    <child
+      link="forearm_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-0.9"
+      upper="1.9"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="hand_Link">
+    <inertial>
+      <origin
+        xyz="-0.199995242637392 0.00419706802846348 -0.00142225093851233"
+        rpy="0 0 0" />
+      <mass
+        value="0.265591257923259" />
+      <inertia
+        ixx="0.000104822963108125"
+        ixy="3.67308203478203E-05"
+        ixz="-2.24286603202982E-05"
+        iyy="0.00252684742536681"
+        iyz="4.70669689382583E-07"
+        izz="0.00247800811485312" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/hand_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/hand_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist_flex_joint"
+    type="revolute">
+    <origin
+      xyz="-0.310699999999999 -0.000404999999955245 0"
+      rpy="-3.14 0 -6.29" />
+    <parent
+      link="forearm_Link" />
+    <child
+      link="hand_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-2"
+      upper="2"
+      effort="0"
+      velocity="0" />
+  </joint>
+  
+  <link
+    name="hand_v_point_link">
+    <inertial>
+      <origin
+        xyz="9.85184994624355E-06 5.2606621683722E-06 9.59251979087972E-06"
+        rpy="0 0 0" />
+      <mass
+        value="6.03821057856612E-10" />
+      <inertia
+        ixx="6.2627284371122E-17"
+        ixy="-3.08659998931007E-20"
+        ixz="-6.06545896938407E-20"
+        iyy="6.41440919572575E-17"
+        iyz="-2.95525953974363E-20"
+        izz="6.27166137280698E-17" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/hand_v_point_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_assembly_32/meshes/hand_v_point_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hand_v_point_joint"
+    type="fixed">
+    <origin
+      xyz="-0.308174999999962 0.000404999999998545 -0.000999999999993955"
+      rpy="1.5707963267949 -3.06005221162309E-15 3.14159265358972" />
+    <parent
+      link="hand_Link" />
+    <child
+      link="hand_v_point_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link
+    name="tower_assembly_link">
+    <inertial>
+      <origin
+        xyz="0.00373031805394412 -0.109521772367587 -0.00094607896125707"
+        rpy="0 0 0" />
+      <mass
+        value="0.472797752126723" />
+      <inertia
+        ixx="0.0132048983708814"
+        ixy="0.000446114691272635"
+        ixz="-1.22931275344956E-05"
+        iyy="0.000797414362944891"
+        iyz="1.24477570338896E-05"
+        izz="0.0125853458906268" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/tower_assembly_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/tower_assembly_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="tower_assembly_joint"
+    type="fixed">
+    <origin
+      xyz="-0.051 0 0.401 "
+      rpy="0 3.8858E-16 0" />
+    <parent
+      link="upper_arm_link" />
+    <child
+      link="tower_assembly_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+
+
+  <link
+    name="tilt_servo_link">
+    <inertial>
+      <origin
+        xyz="-0.00109067969101722 -0.028237042891111 9.57827097787609E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0439036392763118" />
+      <inertia
+        ixx="1.13233169778659E-05"
+        ixy="2.09382556754284E-07"
+        ixz="-1.7393682252582E-08"
+        iyy="7.17167323388589E-06"
+        iyz="-1.72708249180467E-09"
+        izz="1.35303812288883E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 1.57" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/tilt_servo_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 1.57" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/tilt_servo_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="head_pan_joint"
+    type="revolute">
+    <origin
+      xyz="0.052725 0.0003 0.164 "
+      rpy="0 3.14 0" />
+    <parent
+      link="tower_assembly_link" />
+    <child
+      link="tilt_servo_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-2.9"
+      upper="2.9"
+      effort="1.0"
+      velocity="1.571" />
+  </joint>
+  
+
+ <joint name="head_tilt_joint" type="revolute">
+    <origin
+      xyz="0 0 -0.0415"
+      rpy="-3.14 -6.1062E-16 3.14" />
+    <parent
+      link="tilt_servo_link" />
+    <child
+      link="camera_link_a" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-2.9"
+      upper="2.9"
+      effort="1.0"
+      velocity="1.571" />
+  </joint>
+
+  <link name="camera_link_a">
+    <inertial>
+      <mass value="0.000001"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+    </inertial>
+  </link>
+
+
+<link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="0.00104677755214932 0.0565354259412041 0.000706823006794352"
+        rpy="0 0 0" />
+      <mass
+        value="0.218601103688772" />
+      <inertia
+        ixx="5.68306243830738E-05"
+        ixy="-1.64334986592043E-07"
+        ixz="3.17640997051293E-06"
+        iyy="0.000544517856899513"
+        iyz="5.49918514517201E-07"
+        izz="0.000556932366470026" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.06"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="5 0.819607843137255 0.233333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.06"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://tower_camera_assembly_1/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint
+    name="head_tilt_joint_b"
+    type="fixed">
+    <origin
+      xyz="0 0 0.06"
+      rpy="0 -6.1062E-16 0" />
+    <parent
+      link="camera_link_a" />
+    <child
+      link="camera_link" />
+     </joint>
+
+  <joint name="camera_depth_joint" type="fixed">
+          <origin xyz="0 0.025 0" rpy="0 0 0" />
+          <parent link="camera_link" />
+          <child link="camera_depth_frame" />
+      </joint>
+
+      <link name="camera_depth_frame">
+      <inertial>
+         <mass value="0.000001" />
+         <origin xyz="0 0 0" />
+         <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+            iyy="0.0001" iyz="0.0"
+            izz="0.0001" />
+         </inertial>
+      </link>
+
+      <joint name="camera_depth_optical_joint" type="fixed">
+         <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+         <parent link="camera_depth_frame" />
+         <child link="camera_depth_optical_frame" />
+      </joint>
+
+      <link name="camera_depth_optical_frame">
+         <inertial>
+            <mass value="0.000001" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+         </inertial>
+      </link>
+
+      <joint name="camera_rgb_joint" type="fixed">
+         <origin xyz="0 -0.025 0" rpy="0 0 0" />
+         <parent link="camera_link" />
+         <child link="camera_rgb_frame" />
+      </joint>
+
+      <link name="camera_rgb_frame">
+         <inertial>
+         <mass value="0.000001" />
+         <origin xyz="0 0 0" />
+         <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+            iyy="0.0001" iyz="0.0"
+            izz="0.0001" />
+         </inertial>
+      </link>
+
+      <joint name="camera_rgb_optical_joint" type="fixed">
+         <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+         <parent link="camera_rgb_frame" />
+         <child link="camera_rgb_optical_frame" />
+      </joint>
+
+      <link name="camera_rgb_optical_frame">
+         <inertial>
+            <mass value="0.000001" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+         </inertial>
+      </link>
+</robot>

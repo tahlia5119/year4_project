@@ -1,0 +1,5 @@
+rate: 10
+z_threshold: 0.05
+min_height: 15.0
+max_height: 25.0
+

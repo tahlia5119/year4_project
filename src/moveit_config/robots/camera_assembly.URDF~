@@ -1,0 +1,123 @@
+<robot
+  name="camera_assembly">
+  <link name="base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+	<box size = "0.1 0.1 0.001"/>
+	</geometry>
+    </visual>
+  </link>
+
+  <joint name="base_joint" type="fixed">
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <parent link="base_footprint"/>
+    <child link="camera_link"/>
+  </joint>
+  
+
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="0.00104677755214932 0.0565354259412041 0.000706823006794352"
+        rpy="0 0 0" />
+      <mass
+        value="0.218601103688772" />
+      <inertia
+        ixx="5.68306243830738E-05"
+        ixy="-1.64334986592043E-07"
+        ixz="3.17640997051293E-06"
+        iyy="0.000544517856899513"
+        iyz="5.49918514517201E-07"
+        izz="0.000556932366470026" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 -0.06"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://camera_assembly/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="5 0.819607843137255 0.233333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.06"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://camera_assembly/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="camera_depth_joint" type="fixed">
+          <origin xyz="0 0.025 0" rpy="0 0 0" />
+          <parent link="camera_link" />
+          <child link="camera_depth_frame" />
+   </joint>
+
+   <link name="camera_depth_frame">
+      <inertial>
+         <mass value="0.000001" />
+         <origin xyz="0 0 0" />
+         <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+            iyy="0.0001" iyz="0.0"
+            izz="0.0001" />
+       </inertial>
+    </link>
+
+      <joint name="camera_depth_optical_joint" type="fixed">
+         <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+         <parent link="camera_depth_frame" />
+         <child link="camera_depth_optical_frame" />
+      </joint>
+
+      <link name="camera_depth_optical_frame">
+         <inertial>
+            <mass value="0.000001" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+         </inertial>
+      </link>
+
+      <joint name="camera_rgb_joint" type="fixed">
+         <origin xyz="0 -0.025 0" rpy="0 0 0" />
+         <parent link="camera_link" />
+         <child link="camera_rgb_frame" />
+      </joint>
+
+      <link name="camera_rgb_frame">
+         <inertial>
+         <mass value="0.000001" />
+         <origin xyz="0 0 0" />
+         <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+            iyy="0.0001" iyz="0.0"
+            izz="0.0001" />
+         </inertial>
+      </link>
+
+      <joint name="camera_rgb_optical_joint" type="fixed">
+         <origin xyz="0 0 0" rpy="-1.57 0 -1.57" />
+         <parent link="camera_rgb_frame" />
+         <child link="camera_rgb_optical_frame" />
+      </joint>
+
+      <link name="camera_rgb_optical_frame">
+         <inertial>
+            <mass value="0.000001" />
+            <origin xyz="0 0 0" />
+            <inertia ixx="0.0001" ixy="0.0" ixz="0.0"
+               iyy="0.0001" iyz="0.0"
+               izz="0.0001" />
+         </inertial>
+      </link>
+</robot>

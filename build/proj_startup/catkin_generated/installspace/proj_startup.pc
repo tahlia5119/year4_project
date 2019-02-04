@@ -1,0 +1,8 @@
+prefix=/home/tahlia/y4_ws/install
+
+Name: proj_startup
+Description: Description of proj_startup
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/tahlia/y4_ws/install/lib 
+Requires: 

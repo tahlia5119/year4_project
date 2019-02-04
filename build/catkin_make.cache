@@ -1,0 +1,2 @@
+camera_assembly:moveit_config:proj_startup:proj_tags:proj_tests
+-DCATKIN_DEVEL_PREFIX=/home/tahlia/y4_ws/devel -DCMAKE_INSTALL_PREFIX=/home/tahlia/y4_ws/install -G Unix Makefiles

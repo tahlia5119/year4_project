@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: camera_assembly
+    relative_path: description/camera_assembly.URDF
+  SRDF:
+    relative_path: config/camera_assembly.srdf
+  CONFIG:
+    author_name: Tahlia
+    author_email: zceetcu@ucl.ac.uk
+    generated_timestamp: 1520083180

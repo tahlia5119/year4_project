@@ -1,0 +1,7 @@
+rate: 20
+search_timeout: 10.0
+z_error: 0.1
+min_height: 10.0
+max_height: 25.0
+lift_rate: 25
+

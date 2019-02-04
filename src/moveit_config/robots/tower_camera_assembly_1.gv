@@ -1,0 +1,50 @@
+digraph G {
+node [shape=box];
+"base_footprint" [label="base_footprint"];
+"base_link" [label="base_link"];
+"upper_arm_link" [label="upper_arm_link"];
+"forearm_Link" [label="forearm_Link"];
+"hand_Link" [label="hand_Link"];
+"hand_v_point_link" [label="hand_v_point_link"];
+"l_finger_link" [label="l_finger_link"];
+"r_finger_link" [label="r_finger_link"];
+"tower_assembly_link" [label="tower_assembly_link"];
+"tilt_servo_link" [label="tilt_servo_link"];
+"camera_link_a" [label="camera_link_a"];
+"camera_link" [label="camera_link"];
+"camera_depth_frame" [label="camera_depth_frame"];
+"camera_depth_optical_frame" [label="camera_depth_optical_frame"];
+"camera_rgb_frame" [label="camera_rgb_frame"];
+"camera_rgb_optical_frame" [label="camera_rgb_optical_frame"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_footprint" -> "base_joint" [label="xyz: 0 0 0 \nrpy: 0 -0 0"]
+"base_joint" -> "base_link"
+"base_link" -> "sholder_pan_joint" [label="xyz: 0 0 0.0585 \nrpy: 0 -0 0"]
+"sholder_pan_joint" -> "upper_arm_link"
+"upper_arm_link" -> "elbow_lift_joint" [label="xyz: 0 0 0.06755 \nrpy: -6.9709e-14 1.57 -1.57"]
+"elbow_lift_joint" -> "forearm_Link"
+"forearm_Link" -> "wrist_flex_joint" [label="xyz: -0.3107 -0.000405 0 \nrpy: -3.14 8.47033e-22 -0.00681469"]
+"wrist_flex_joint" -> "hand_Link"
+"hand_Link" -> "hand_v_point_joint" [label="xyz: -0.308175 0.000405 -0.001 \nrpy: 1.5708 -3.06005e-15 3.14159"]
+"hand_v_point_joint" -> "hand_v_point_link"
+"hand_Link" -> "left_gripper_joint" [label="xyz: -0.297175 0 0.019 \nrpy: -1.5708 0.78 -7.27745e-14"]
+"left_gripper_joint" -> "l_finger_link"
+"hand_Link" -> "right_gripper_joint" [label="xyz: -0.297175 0 -0.021 \nrpy: 1.5708 -0.78 4.68506e-16"]
+"right_gripper_joint" -> "r_finger_link"
+"upper_arm_link" -> "tower_assembly_joint" [label="xyz: -0.051 0 0.401 \nrpy: 0 3.8858e-16 0"]
+"tower_assembly_joint" -> "tower_assembly_link"
+"tower_assembly_link" -> "head_pan_joint" [label="xyz: 0.052725 0.0003 0.164 \nrpy: 3.14159 0.00159265 3.14159"]
+"head_pan_joint" -> "tilt_servo_link"
+"tilt_servo_link" -> "head_tilt_joint" [label="xyz: 0 0 -0.0415 \nrpy: -3.14 -6.1062e-16 3.14"]
+"head_tilt_joint" -> "camera_link_a"
+"camera_link_a" -> "head_tilt_joint_b" [label="xyz: 0 0 0.06 \nrpy: 0 -6.1062e-16 0"]
+"head_tilt_joint_b" -> "camera_link"
+"camera_link" -> "camera_depth_joint" [label="xyz: 0 0.025 0 \nrpy: 0 -0 0"]
+"camera_depth_joint" -> "camera_depth_frame"
+"camera_depth_frame" -> "camera_depth_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.57 -5.55112e-17 -1.57"]
+"camera_depth_optical_joint" -> "camera_depth_optical_frame"
+"camera_link" -> "camera_rgb_joint" [label="xyz: 0 -0.025 0 \nrpy: 0 -0 0"]
+"camera_rgb_joint" -> "camera_rgb_frame"
+"camera_rgb_frame" -> "camera_rgb_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.57 -5.55112e-17 -1.57"]
+"camera_rgb_optical_joint" -> "camera_rgb_optical_frame"
+}

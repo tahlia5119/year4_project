@@ -1,0 +1,8 @@
+prefix=/home/tahlia/y4_ws/devel
+
+Name: proj_tags
+Description: Description of proj_tags
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/tahlia/y4_ws/devel/lib 
+Requires: 
